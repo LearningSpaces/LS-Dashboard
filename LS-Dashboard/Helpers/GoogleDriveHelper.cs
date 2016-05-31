@@ -190,7 +190,7 @@ namespace LS_Dashboard.Helpers
             response.Close();
 
             var results = new List<CartModel>();
-            foreach(var row in vehicleList)
+            foreach(var row in vehicleList.Skip(1))
             {
                 results.Add(new CartModel()
                 {
