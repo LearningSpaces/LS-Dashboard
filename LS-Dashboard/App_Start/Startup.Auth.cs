@@ -1,11 +1,10 @@
 ﻿using System;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
-using Owin;
 using LS_Dashboard.Models;
+using Microsoft.Owin;
+using Microsoft.AspNet.Identity;
+using Owin;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security.Cookies;
 
 namespace LS_Dashboard
 {
