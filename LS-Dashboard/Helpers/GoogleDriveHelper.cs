@@ -50,12 +50,12 @@ namespace LS_Dashboard.Helpers
             response.Close();
 
             var results = new List<ItemModel>();
-            foreach (var row in itemList)
+            foreach (var row in itemList.Skip(1))
             {
                 results.Add(new ItemModel()
                 {
                     Name = row[0],
-                    ItemStatus = row[4],
+                    ItemStatus = row[3],
                     CheckoutInfo = new ItemModel.CheckoutData()
                     {
                         Name = row[1]
