@@ -239,15 +239,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\WiWController.cs" />
     <Compile Include="Controllers\GoogleDriveController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\WheniWorkHelper.cs" />
+    <Compile Include="Helpers\ServiceNowHelper.cs" />
     <Compile Include="Helpers\GoogleDriveHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\ShiftModel.cs" />
+    <Compile Include="Models\WiWLoginModel.cs" />
     <Compile Include="Models\Sectors.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\TechCheckModel.cs" />
