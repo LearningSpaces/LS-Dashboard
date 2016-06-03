@@ -246,11 +246,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CherwellHelper.cs" />
     <Compile Include="Helpers\WheniWorkHelper.cs" />
     <Compile Include="Helpers\ServiceNowHelper.cs" />
     <Compile Include="Helpers\GoogleDriveHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\CherwellModel.cs" />
     <Compile Include="Models\ShiftModel.cs" />
     <Compile Include="Models\WiWLoginModel.cs" />
     <Compile Include="Models\Sectors.cs" />
@@ -266,6 +268,19 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Dashboard\custerr.css" />
+    <Content Include="Dashboard\dashboard.css" />
+    <Content Include="Dashboard\Dashboard.html" />
+    <Content Include="Dashboard\dashboard.js" />
+    <Content Include="Dashboard\dashboard_tech.css" />
+    <Content Include="Dashboard\dashboard_tech.html" />
+    <Content Include="Dashboard\dashboard_tech.js" />
+    <Content Include="Dashboard\dashboard_tech_mobile.css" />
+    <Content Include="Dashboard\home.css" />
+    <Content Include="Dashboard\home.html" />
+    <Content Include="Dashboard\iisstart.htm" />
+    <Content Include="Dashboard\learningspacestest.html" />
+    <Content Include="Dashboard\stylesheet.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -278,6 +293,10 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Dashboard\composer.json" />
+    <Content Include="Dashboard\composer.lock" />
+    <Content Include="Dashboard\config.json" />
+    <Content Include="Dashboard\web.config" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

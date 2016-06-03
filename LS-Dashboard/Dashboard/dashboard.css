@@ -1,0 +1,198 @@
+@charset "utf-8";
+/* CSS Document */
+/* Eliminates empty space for all elements*/
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border-spacing: 0px;
+}
+a {
+	color: #000000;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	color: #000000;
+	text-decoration:underline;
+}
+a:hover {
+	text-decoration: underline;
+}
+/* Stretches the content to the viewport and sets page font*/
+html,body {
+	overflow: hidden;
+	min-width: 1000px;
+	min-height: 1000px;
+	
+	background-color: white;
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+}
+h1 {
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+	font-weight: lighter;
+	font-size: 48px;
+}
+h2{
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+	font-weight: lighter;
+	font-size: 19px;
+}
+h3{
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+	font-size: 23px;
+}
+/* ****** Classes ****** */
+
+/* Styling for tables in content section */
+.caseTable {
+	border:none;
+	border-collapse: collapse;
+	color: #FFFFFF;
+	max-width: 32%;
+	width: 100% !important;
+	background-color: transparent;
+	
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+	font-weight: lighter;
+	overflow: hidden;
+}
+.caseTable tr,th {
+	text-align: center;
+}
+.caseTable thead tr:first-child th{
+	font-size: 20px;
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+}
+.caseTable thead tr:last-child th{
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+	font-weight: lighter;
+}
+.caseTable tbody tr img {
+	height: 20px;
+}
+.caseTable thead tr img {
+	height: 40px;
+}
+.caseTable tbody tr {
+	border: #FFFFFF solid 0px;
+	border-top-width: 5px;
+	background-color: #2a2e30;
+	text-align:center;
+	height: 35px;
+}
+.caseTable tbody tr:last-child{
+	height:auto;
+}
+.caseTable tbody td:first-child{
+	border-left: none;
+}
+/* Styling for tables that show current/upcoming shift workers */
+.workerTable {
+	padding-left: 10px;
+	width:100%;
+	color: #FFFFFF;
+	text-align: left;
+}
+.workerTable tr {
+	font-size: 20px;
+}
+.workerTable caption {
+	background-color: #991b1e;
+	padding-left: 10px;
+	text-align: left;
+	font-size: 1.5em;
+}
+
+/* ****** IDs ****** */
+
+/* Actionables table */
+#actionable {
+	position:absolute;
+	left: 0%;
+	top: 0%;
+	height: 80%;
+}
+#actionable thead tr:first-child{
+	background-color: #991b1e;
+}
+#actionable thead tr:last-child{
+	background-color: #801719;
+}
+/* Faculty Assist table */
+#faculty_assists {
+	position:absolute;
+	left: 33.4%;
+	top: 0%;
+	height: 50%;
+}
+#faculty_assists thead tr:first-child{
+	background-color: #b3a59f;
+}
+#faculty_assists thead tr:last-child{
+	background-color: #998d88;
+}
+/* Class in Session Table */
+#class_in_session {
+	position:absolute;
+	left: 66.8%;
+	top: 0%;
+	height: 40%;
+}
+#class_in_session thead tr:first-child{
+	background-color: #fdaf33;
+}
+#class_in_session thead tr:last-child{
+	background-color: #e39d2d;
+}
+/* Icon Key Table */
+#icon_key {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+#icon_key thead tr{
+	background-color: #192936;
+}
+#icon_key thead tr:first-child{
+	background-color: #253c4e;
+}
+/* TechChecks Table */
+#techcheck_stats {
+	position: absolute;
+	bottom: 0;
+	left: 33.4%;
+}
+#techcheck_stats thead tr:first-child{
+	background-color: #6eb4ce;
+}
+#techcheck_stats thead tr:last-child th:nth-child(1){
+	background-color: #fdaf33;
+}
+#techcheck_stats thead tr:last-child th:nth-child(2){
+	background-color: #609eb5;
+}
+#techcheck_stats thead tr:last-child th:nth-child(3){
+	background-color: #96a0a8;
+}
+#techcheck_stats tbody tr {
+	background-color: transparent;
+}
+#techcheck_stats tbody tr canvas {
+	height: 100%;
+	width: 100%;
+}
+/* Cart Status Table */
+#cart_status {
+	position: absolute;
+	bottom: 0;
+	left: 66.8%;
+	text-align: left;
+}
+#cart_status thead tr:first-child{
+	background-color: #aebac3;
+}
+#cart_status thead tr:last-child{
+	background-color: #96a0a8;
+}

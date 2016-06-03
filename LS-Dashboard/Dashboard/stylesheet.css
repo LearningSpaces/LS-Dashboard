@@ -1,0 +1,102 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Custom font used */
+@font-face { font-family: Frutiger Lt Std; src: url(res/fonts/Frutiger%20LT%20Std/FrutigerLTStd-Roman.otf); }
+@font-face { font-family: Frutiger Lt Std; font-weight: bold; src: url(res/fonts/Frutiger%20LT%20Std/FrutigerLTStd-Bold.otf); }
+@font-face { font-family: Frutiger Lt Std; font-weight: lighter; src: url(res/fonts/Frutiger%20LT%20Std/FrutigerLTStd-Light.otf); }
+
+/* ****** Elements ****** */
+
+/* Eliminates empty space for all elements*/
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border-spacing: 0px;
+	/*overflow: hidden;*/
+}
+/* Stretches the content to the viewport and sets page font*/
+html,body {
+	overflow: hidden;
+	min-width: 1000px;
+	min-height: 1000px;
+	
+	background-color: white;
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+}
+h1 {
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+	font-weight: lighter;
+	font-size: 3em;
+}
+h2{
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+	font-weight: lighter;
+	font-size: 1.2em;
+}
+h3{
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+	font-size: 1.4em;
+}
+
+/* ****** IDs ****** */
+
+/* Overall header */
+#header {
+	position: absolute;
+	height: 13.889%;
+	width: calc((83.333% - 10px)*.988);
+	top:0px;
+	left:16.667%;
+	background-color: transparent;
+
+	margin: 0 5px 0 5px;
+}
+/* Top part of header */
+#header tr:first-child {
+	color: #991b1e;
+	height: 80%;
+}
+/* Navigation bar and Date/Time bar */
+#header tr:last-child {
+	color: #FFFFFF;
+	height: 20%;
+}
+/* Navigation bar */
+#nav_loc {
+	width: 66.8%;
+	background-color: #d7d7d7;
+	color: #2a2e30;
+	font-size: .8em;
+	padding-left: 5%;
+}
+/* Date/Time bar */
+#date_time{
+	text-align: center;
+	width: 32%;
+	background-color: #991b1e;
+	color: #FFFFFF;
+}
+/* Overall content section */
+#content {
+	position: absolute;
+	top: 13.889%;
+	left: 16.667%;
+	height: calc(86.111% - 10px);
+	width: calc(83.333% - 10px);
+	
+	margin: 5px;
+}
+/* Overall sidebar section */
+#sidebar {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: 100%;
+	width: 16.667%;
+	
+	background-color: #2a2e30;
+}
+
+/* ****** Classes ****** */

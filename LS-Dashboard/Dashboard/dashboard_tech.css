@@ -1,0 +1,300 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Custom font used */
+@font-face { font-family: Frutiger Lt Std; src: url(../res/fonts/Frutiger%20LT%20Std/FrutigerLTStd-Roman.otf); }
+@font-face { font-family: Frutiger Lt Std; font-weight: bold; src: url(../res/fonts/Frutiger%20LT%20Std/FrutigerLTStd-Bold.otf); }
+@font-face { font-family: Frutiger Lt Std; font-weight: lighter; src: url(../res/fonts/Frutiger%20LT%20Std/FrutigerLTStd-Light.otf); }
+
+/* ****** Elements ****** */
+
+/* Eliminates empty space for all elements*/
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border-spacing: 0px;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	color: #000000;
+	text-decoration:underline;
+}
+a:hover {
+	text-decoration: underline;
+}
+/* Stretches the content to the viewport and sets page font*/
+html,body {
+	overflow: hidden;
+	min-width: 1000px;
+	min-height: 1000px;
+	
+	background-color: white;
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+}
+h1 {
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+	font-weight: lighter;
+	font-size: 48px;
+}
+h2{
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+	font-weight: lighter;
+	font-size: 19px;
+}
+h3{
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+	font-size: 23px;
+}
+table {
+	table-layout: fixed;
+}
+/* ****** Classes ****** */
+.tree_leaf {
+	position:absolute;
+	height: 50px;
+	width: 50px;
+	border-radius: 100%;
+	margin-left:-25px;
+	margin-top:-15px;
+	text-align:center;
+	align-content:center;
+	line-height:48px;
+	border: 3px solid #FFFFFF;
+	background-color: #991b1e;
+	color: #FFFFFF;
+}
+
+.leaf_selected {
+	border: 3px solid #FFFFFF;
+	background-color: #991b1e;
+	color: #FFFFFF;
+	line-height:48px;
+}
+
+.leaf_unselected {
+	border: 1px solid #991b1e;
+	background-color: #FFFFFF;
+	color: #991b1e;
+	line-height:52px;
+}
+
+.case_table {
+	border:none;
+	border-collapse: collapse;
+	color: #FFFFFF;
+	background-color: transparent;
+	width: 32%;
+	
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+	font-weight: lighter;
+}
+.case_table tr,th {
+	text-align: center;
+}
+.case_table thead tr:first-child th{
+	font-size: 1.2em;
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+}
+.case_table thead tr:last-child th{
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+	font-weight: lighter;
+}
+.case_table tbody tr img {
+	height: 20px;
+}
+.case_table thead tr img {
+	height: 40px;
+}
+.case_table tbody tr {
+	border: #FFFFFF solid 0px;
+	border-top-width: 5px;
+	background-color: #2a2e30;
+	text-align:center;
+	height: 35px;
+}
+.case_table tbody tr:last-child{
+	height:auto;
+}
+.case_table tbody td:first-child{
+	border-left: none;
+}
+.row_1_leaf {
+	top: calc(100%/3);
+}
+.row_2_leaf {
+	top: calc(100%/3*2);
+}
+
+/* ****** IDs ****** */
+
+/* Overall header */
+#header {
+	position: absolute;
+	height: 13.889%;
+	width: calc((83.333% - 10px)*.988);
+	top:0px;
+	left:16.667%;
+	background-color: transparent;
+
+	margin: 0 5px 0 5px;
+}
+/* Top part of header */
+#header tr:first-child {
+	color: #991b1e;
+	height: 80%;
+}
+/* Navigation bar and Date/Time bar */
+#header tr:last-child {
+	color: #FFFFFF;
+	height: 20%;
+}
+/* Navigation bar */
+#nav_loc {
+	width: 66.8%;
+	background-color: #d7d7d7;
+	color: #2a2e30;
+	font-size: .8em;
+	padding-left: 5%;
+}
+/* Date/Time bar */
+#date_time{
+	text-align: center;
+	width: 32%;
+	background-color: #991b1e;
+	color: #FFFFFF;
+}
+/* Overall content section */
+#content {
+	position: absolute;
+	top: 13.889%;
+	left: 16.667%;
+	height: calc(86.111% - 10px);
+	width: calc(83.333% - 10px);
+	
+	margin: 5px;
+}
+/* Overall sidebar section */
+#sidebar {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: 100%;
+	width: 16.667%;
+	
+	background-color: #2a2e30;
+}
+
+#sidebar img {
+	width: 100%;
+}
+
+#eng_leaf {
+	left:calc(100%/4);
+}
+
+#as_leaf {
+	left:calc(100%/4*2);
+}
+
+#res_leaf {
+	left:calc(100%/4*3);
+}
+
+#act_leaf {
+	left:calc(100%/5);
+	background-color: #991b1e;
+}
+
+#fa_leaf {
+	left:calc(100%/5*2);
+	background-color: #b3a59f;
+}
+
+#cis_leaf {
+	left:calc(100%/5*3);
+	background-color: #fdaf33;
+}
+
+#techcheck_leaf {
+	left:calc(100%/5*4);
+	background-color: #6eb4ce;
+}
+
+#decision_tree {
+	position:absolute;
+	padding: 5px;
+	top:200px;
+	left:0;
+	height:180px;
+	width: 100%;
+	border: 1px solid black;
+	background-color: grey;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+#actionable {
+	position:absolute;
+	left: 0%;
+	top: 0%;
+	height: 80%;
+}
+#actionable thead tr:first-child{
+	background-color: #991b1e;
+}
+#actionable thead tr:last-child{
+	background-color: #801719;
+}
+/* Faculty Assist table */
+#faculty_assist {
+	position:absolute;
+	left: 33.4%;
+	top: 0%;
+	height: 50%;
+}
+#faculty_assist thead tr:first-child{
+	background-color: #b3a59f;
+}
+#faculty_assist thead tr:last-child{
+	background-color: #998d88;
+}
+/* Class in Session Table */
+#class_in_session {
+	position:absolute;
+	left: 66.8%;
+	top: 0%;
+	height: 40%;
+}
+#class_in_session thead tr:first-child{
+	background-color: #fdaf33;
+}
+#class_in_session thead tr:last-child{
+	background-color: #e39d2d;
+}
+#tech_check_cvs {
+	position:absolute;
+	width: 100%;
+}
+#tech_check tbody tr:first-child {
+	font-size: 20px;
+	color: #FFFFFF;
+	text-align: center;
+}
+#tech_check {
+	position: absolute;
+	width: 100%;
+	top: 400px;
+}
+#tech_check thead tr:first-child{
+	font-size: 1.2em;
+	font-family: Frutiger Lt Std, Arial, sans-serif;
+	color: #FFFFFF;
+	background-color: #6eb4ce;
+}
+#tech_check thead img {
+	height: 40px;
+	width: 40px;
+}

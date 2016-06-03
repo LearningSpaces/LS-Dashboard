@@ -1,0 +1,26 @@
+/* CSS Document */
+
+#link_tree{
+	color: #FFF;
+	width: 100%;
+}
+#link_tree div {
+	display:block;
+	padding-top: 5px;
+}
+#link_tree div span {
+	background-color: #991b1e;
+	color: #FFF;
+	display:block;
+	width: 100%;
+}
+#link_tree a {
+	display:block;
+	color: #FFF;
+	text-decoration:none;
+}
+#link_tree a:hover {
+	display: block;
+	color: #000;
+	background-color: #d7d7d7;
+}

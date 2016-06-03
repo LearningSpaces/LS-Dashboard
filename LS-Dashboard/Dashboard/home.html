@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+		<title>Learning Spaces Server</title>
+		<link href="stylesheet.css" rel="stylesheet" type="text/css">
+        <link href="home.css" rel="stylesheet" type="text/css">
+        <script src="utils/jquery-1.11.3.js" type="text/javascript"></script>
+        <script src="utils/jquery-ui.js" type="text/javascript"></script>
+        <script>
+			$(function() {
+				$( "#link_tree > div" ).accordion({
+					headers:"span",
+					collapsible: true,
+					active: false
+				});
+				updateDateTime();
+				setInterval(updateDateTime, 1000*5);
+			});
+			function updateDateTime(){
+				var elem = $("#date_time")[0];
+				var d = new Date();
+				elem.innerHTML = getMonthString(d.getMonth())+" "+(d.getDate()<10?"0":"")+d.getDate()+", "+d.getFullYear()+" - "+(d.getHours()%12==0?12:d.getHours()%12)+":"+(d.getMinutes()<10?"0":"")+d.getMinutes()+" "+(d.getHours < 12 ? "AM" : "PM");
+				
+				function getMonthString(month){
+					switch(month){
+						case(0):
+							return "January";
+						case(1):
+							return "February";
+						case(2):
+							return "March";
+						case(3):
+							return "April";
+						case(4):
+							return "May";
+						case(5):
+							return "June";
+						case(6):
+							return "July";
+						case(7):
+							return "August";
+						case(8):
+							return "September";
+						case(9):
+							return "October";
+						case(10):
+							return "November";
+						case(11):
+							return "December";
+					}
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div id="header">
+        	<table width="100%" height="100%">
+                <tr><td colspan="3"><h1>learning spaces server</h1></td></tr>
+                <tr><td id="nav_loc">home</td><td id="date_time"></td></tr>
+            </table>
+        </div>
+        <div id="sidebar">
+        	<img src="res/images/ouit-logo.gif" width="100%">
+            <div id="link_tree">
+            	<div>
+            		<span>Tools</span>
+                	<ul>
+                    	<li><a href="https://ounew.service-now.com/">ServiceNow</a></li>
+						<li><a href="http://ouitls-1.wheniwork.com">When I Work</a></li>
+                        <li><a href="https://printcharges.ou.edu/app">Print Charges</a></li>
+                        <li><a href="https://webapps.ou.edu/WebTR/default.cfm?choice=Non">Maintenance Request Form</a></li>
+                        <li><a href="https://ousurvey.qualtrics.com/SE/?SID=SV_d6UUICkH7Lje4lf">Faculty Assist Form</a></li>
+                        <li><a style="font-size: 13px;" href="/w/page/84183223/WEPA">WEPA</a></li>
+                        <li><a href="http://itscnorman.ou.edu">OUIT Service Catalogue</a></li>
+                        <li><a href="dev/PullEmployeeStats.html">Employee Stats</a></li>
+                    </ul>
+                </div>
+                <div>
+            		<span>LEL</span>
+                	<ul>
+                    	<li><a href="https://ousurvey.qualtrics.com/SE/?SID=SV_6KUNQT3VHCQNMlD">Shift Duties Form</a></li>
+                    </ul>
+                </div>
+                <div>
+            		<span>Tech Links</span>
+                	<ul>
+                    	<li><a href="dashboard.html" search_id="undefined">Full Dashboard</a></li>
+						<li><a href="dashboard_tech.html">Field Dashboard</a></li>
+                        <li><a href="http://ls-server.net.ou.edu">LS Server (Campus Network Only)</a></li>
+                        <li><a href="https://docs.google.com/forms/d/1ZsYBCNAuD8ZvpWu1zF67tIe8KT-DqZykVam7cSEtrVQ/viewform" target="_blank" search_id="undefined">Tech Bag Check Form</a></li>
+                        <li><a href="https://docs.google.com/spreadsheet/ccc?key=0Aq5do_3dBT7qdEIwM3JZLUVpVm8xbzkzLW54UXRwNGc&amp;usp=sharing">Computers down in Altiris</a></li>
+                        <li><a href="https://share.ou.edu/sites/IT/norman/ITsites/classtech/default.aspx">Classrooms Information Share</a></li>
+                        <li><a href="https://docs.google.com/forms/d/1AL-cjokT_IK9AR8hxVuzrVmrsFZmPRGxA46kl0fBbEA/viewform">Vehicle Checkout Form</a></li>
+                        <li><a href="https://docs.google.com/forms/d/1Is2ntU7Pe-YVAcqQd5zTi4q1PS2vHrlqwk_14hLJGrA/viewform">TechCheck Form</a></li>
+                        <li><a href="https://docs.google.com/spreadsheets/d/1HCHTXuvch1iBDLUDeHaYIdEOEj_8HVZSFsv6mw_C220/pubhtml?gid=2047447980&amp;single=true">TechCheck Status</a></li>
+                    </ul>
+                </div>
+                <div>
+            		<span>Training and Developement</span>
+                	<ul>
+						<li><a href="http://learn.ou.edu">D2L</a></li>
+                    </ul>
+                </div>
+        	</div>
+        </div>
+        <div id="content" style="align-content:center;">
+        </div>
+	</body>
+</html>

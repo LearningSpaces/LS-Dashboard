@@ -1,0 +1,60 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "de287e83d8191202a8c6c2f4795eb093",
+    "content-hash": "b3e754dd366540a7cfb461e3d0fb5ce6",
+    "packages": [
+        {
+            "name": "wheniwork/wheniwork-api",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dolfelt/wheniwork-api-php.git",
+                "reference": "e713fbf24c084e836c98e82c9b68bfb8b2a3fa3b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dolfelt/wheniwork-api-php/zipball/e713fbf24c084e836c98e82c9b68bfb8b2a3fa3b",
+                "reference": "e713fbf24c084e836c98e82c9b68bfb8b2a3fa3b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Wheniwork": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Olfelt"
+                }
+            ],
+            "description": "Client library for the When I Work scheduling and attendance platform.",
+            "homepage": "https://github.com/dolfelt/wheniwork-api-php",
+            "time": "2015-02-09 21:03:35"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "wheniwork/wheniwork-api": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

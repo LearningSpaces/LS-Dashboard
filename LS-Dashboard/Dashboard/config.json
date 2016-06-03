@@ -1,0 +1,11 @@
+{
+    "UserName":  "verbick@ou.edu",
+    "ReportingDL":  "ls-office@ou.edu",
+	"ErrorReportingDL": "tsmerrorreports@ou.edu",
+    "FromAddress":  "ls-office@ou.edu",
+    "APIKey":  "23588245629b429c427b1dad455c72581260b56c",
+    "Password":  "whenipassword",
+	"BaseURL":  "https://servicesapps.ou.edu/tsmls/index.php",
+	"RootPath":  "C:\\inetpub\\wwwroot\\tsmls\\lock\\",
+	"Signature": "OUIT Learning Spaces Team"
+}

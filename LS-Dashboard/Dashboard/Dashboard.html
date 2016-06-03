@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>OUIT LS Dashboard</title>
+        <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+        <link href="dashboard.css" rel="stylesheet" type="text/css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    	<script src="utils/PHPDriver.js" type="text/javascript"></script>
+        <script src="utils/Chart.js" type="text/javascript"></script>
+    	<script src="dashboard.js" type="text/javascript"></script>
+        <div id="header">
+        	<table width="100%" he ight="100%">
+                <tr><td colspan="3"><h1>learning spaces dashboard</h1></td></tr>
+                <tr><td id="nav_loc"><a href="home.html">home</a> > Dashboard</td><td id="date_time"></td></tr>
+            </table>
+        </div>
+        <div id="sidebar">
+        	<a href="home.html"><img src="res/images/ouit-logo.gif" width="100%"></a>
+            <table class="workerTable" id="currentWorkers">
+            	<caption>Current</caption>
+            </table>
+            <table class="workerTable" id="nextWorkers">
+            	<caption>Upcoming</caption>
+            </table>
+        </div>
+        <div id="content">
+        	<table class="caseTable" id="actionable">
+            	<col style="width:20%">
+        		<col style="width:20%">
+                <col style="width:30%">
+                <col style="width:30%">
+				<thead>
+					<tr><th><img src="res/images/header_icons/Actionables-icon.gif"></th><th colspan="2">actionable</th><th><h3></h3>cases</th></tr>
+					<tr><th>location</th><th>incident</th><th>availability</th><th>priority</th></tr>
+				</thead>
+            </table>
+            <table class="caseTable" id="faculty_assists">
+            	<col style="width:20%">
+                <col style="width:20%">
+                <col style="width:30%">
+                <col style="width:30%">
+				<thead>
+					<tr><th><img src="res/images/header_icons/faculty-assist-icon.gif"></th><th colspan="2">faculty assists</th><th><h3></h3>cases</th></tr>
+					<tr><th>location</th><th>incident</th><th>assist time</th><th>assigned to</th></tr>
+				</thead>
+            </table>
+            <table class="caseTable" id="class_in_session">
+            	<col style="width:20%">
+                <col style="width:20%">
+                <col style="width:30%">
+                <col style="width:30%">
+				<thead>
+					<tr><th><img src="res/images/header_icons/Urgent-Icon.gif"></th><th colspan="2">immediate assistance</th><th><h3></h3>cases</th></tr>
+					<tr><th>location</th><th>incident</th><th>availability</th><th>priority</th></tr>
+				</thead>
+            </table>
+            <table class="caseTable" id="icon_key">
+            	<col style="width:25%">
+                <col style="width:25%">
+                <col style="width:25%">
+                <col style="width:25%">
+                <thead>
+                	<tr><th><img src="res/images/header_icons/Priority-Key-Icon.gif"></th><th>icon key</th><th></th></tr>
+                    <tr><th>priority</th><th>cart status</th><th>icon</th></tr>
+                </thead>
+                <tbody>
+                	<tr><td>moderate</td><td>checked in</td><td><img src="res/images/priority_icons/3_low_green.gif"></td></tr>
+                    <tr><td>high</td><td>cart barn</td><td><img src="res/images/priority_icons/2_high_yellow.gif"></td></tr>
+                    <tr><td>critical</td><td>checked out</td><td><img src="res/images/priority_icons/1_crit_red.gif"></td></tr>
+                </tbody>
+            </table>
+            <table class="caseTable" id="techcheck_stats">
+            	<col style="width:calc(100%/3)">
+                <col style="width:calc(100%/3)">
+                <col style="width:calc(100%/3)">
+                <thead>
+                	<tr><th><img src="res/images/header_icons/Tech-Check-Icons.gif"></th><th>tech checks</th><th></th></tr>
+                    <tr><th>arts & sciences</td><th>engineering</th><th>residential</th></tr>
+                </thead>
+                <tbody>
+                	<tr><td><canvas id="asChecksCanvas"></canvas></td><td><canvas id="engChecksCanvas"></canvas></td><td><canvas id="resChecksCanvas"></canvas></td></tr>
+                </tbody>
+            </table>
+            <table class="caseTable" id="cart_status">
+            	<col style="width:calc(100%/3)">
+                <col style="width:calc(100%/3)">
+                <col style="width:calc(100%/3)">
+                <thead>
+                	<tr><th><img src="res/images/header_icons/cart-Icon.gif"></th><th>carts</th><th></th></tr>
+                    <tr><th>cart</th><th>person</th><th>status</th></tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
