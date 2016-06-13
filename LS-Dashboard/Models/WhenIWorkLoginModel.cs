@@ -6,7 +6,7 @@ using System.Web;
 
 namespace LS_Dashboard.Models
 {
-    public class WiWLoginModel
+    public class WhenIWorkLoginModel
     {
         [JsonProperty("token")]
         public string Token { get; set; }

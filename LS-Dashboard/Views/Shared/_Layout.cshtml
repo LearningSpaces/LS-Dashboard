@@ -40,5 +40,14 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+        console.error("@ViewBag.Error")
+        if ("@ViewBag.Error" != "") {
+            $("#error_panel").show();
+            setTimeout(function () {
+                $("#error_panel").fadeOut("slow");
+            }, 1000 * 5);
+        }
+    </script>
 </body>
 </html>

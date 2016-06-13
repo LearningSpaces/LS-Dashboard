@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using LS_Dashboard.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -35,7 +36,7 @@ namespace LS_Dashboard.Helpers
         //  displayValues: boolean for whether or not to display values for fields that would normally show a reference number
         //    displayValues = true is slower but contains more detailed information
         //  recordCount: limits the number of returned records to a certain amount
-        public static object getRecords(Table table, string query = "active=true", bool displayValues = false, int recordCount = -1)
+        public static List<IncidentModel> getRecords(Table table, string query = "active=true", bool displayValues = false, int recordCount = -1)
         {
             string tableString = "";
             //Change table selection to the string representing the table in ServiceNow
@@ -56,9 +57,7 @@ namespace LS_Dashboard.Helpers
             }
             if (tableString == "")
             {
-                return @"{""error"":
-                    ""Table not recognized""
-                }";
+                return new List<IncidentModel>();
             }
             if (credCache.GetCredential(new Uri(ServiceNowUrl), "Basic") == null)
             {
@@ -83,26 +82,23 @@ namespace LS_Dashboard.Helpers
                     using (StreamReader reader = new StreamReader(response.GetResponseStream()))
                     {
                         string json = reader.ReadToEnd();
-                        var serializer = new JavaScriptSerializer();
-                        return serializer.DeserializeObject(json);
+                        return JsonConvert.DeserializeObject<List<IncidentModel>>(json);
                     }
 
                 }
                 catch (Exception e)
                 {
                     //Something bad happened. Log Results
-                    //ErrorLogger.medLog(e.ToString());
+                    //Logger.Med(e.ToString());
                 }
             }
             catch (Exception e)
             {
                 //Something bad happened. Log Results
-                //ErrorLogger.medLog(e.ToString());
+                //Logger.Med(e.ToString());
             }
 
-            return @"{""error"":
-                    ""Unknown Error""
-                }";
+            return new List<IncidentModel>();
         }
     }
 }

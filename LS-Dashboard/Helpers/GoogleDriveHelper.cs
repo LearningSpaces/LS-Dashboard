@@ -11,7 +11,7 @@ namespace LS_Dashboard.Helpers
 {
     public static class GoogleDriveHelper
     {
-        public static List<ItemModel> GetItemCheck()
+        public static List<ItemModel> GetItems()
         {
 
             List<List<string>> itemList = new List<List<string>>();
@@ -66,7 +66,7 @@ namespace LS_Dashboard.Helpers
             return results;
         }
 
-        public static List<TechCheckSector> GetTechCheck()
+        public static List<TechCheckSectorModel> GetTechChecks()
         {
 
             List<List<string>> techList = new List<List<string>>();
@@ -104,8 +104,8 @@ namespace LS_Dashboard.Helpers
             reader.Close();
             response.Close();
 
-            TechCheckSector Sector;
-            var results = new List<TechCheckSector>();
+            TechCheckSectorModel Sector;
+            var results = new List<TechCheckSectorModel>();
             techList[0].RemoveAll(cell => cell == "");
             for (var i = 0; i < techList[0].Count; i++)
             {
@@ -113,7 +113,7 @@ namespace LS_Dashboard.Helpers
                 {
                     continue;
                 }
-                Sector = new TechCheckSector()
+                Sector = new TechCheckSectorModel()
                 {
                     Name = techList[0][i],
                     Labs = new List<TechCheckModel>()
@@ -151,7 +151,7 @@ namespace LS_Dashboard.Helpers
 
         }
 
-        public static List<CartModel> GetVehicleCheck()
+        public static List<CartModel> GetVehicles()
         {
 
             List<List<string>> vehicleList = new List<List<string>>();

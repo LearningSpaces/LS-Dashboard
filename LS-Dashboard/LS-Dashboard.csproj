@@ -84,6 +84,14 @@
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.1.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.1.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp">
       <Private>True</Private>
     </Reference>
@@ -235,31 +243,29 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\WiWController.cs" />
     <Compile Include="Controllers\GoogleDriveController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CherwellHelper.cs" />
-    <Compile Include="Helpers\WheniWorkHelper.cs" />
+    <Compile Include="Helpers\WhenIWorkHelper.cs" />
     <Compile Include="Helpers\ServiceNowHelper.cs" />
     <Compile Include="Helpers\GoogleDriveHelper.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Hubs\ServerHub.cs" />
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\CherwellModel.cs" />
+    <Compile Include="Models\DB\IncidentContext.cs" />
+    <Compile Include="Models\IncidentModel.cs" />
+    <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\ShiftModel.cs" />
-    <Compile Include="Models\WiWLoginModel.cs" />
-    <Compile Include="Models\Sectors.cs" />
+    <Compile Include="Models\WhenIWorkLoginModel.cs" />
+    <Compile Include="Models\TechCheckSectorModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\TechCheckModel.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\WhenIWorkUserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -303,6 +309,8 @@
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.signalR-2.1.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.1.2.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />

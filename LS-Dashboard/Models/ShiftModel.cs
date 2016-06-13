@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using LS_Dashboard.Helpers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,5 +31,13 @@ namespace LS_Dashboard.Models
         public int Instances { get; set; }
         [JsonProperty("is_open")]
         public bool IsOpen { get; set; }
+
+        public WhenIWorkUserModel User
+        {
+            get
+            {
+                return WhenIWorkHelper.GetUser(UserID);
+            }
+        }
     }
 }

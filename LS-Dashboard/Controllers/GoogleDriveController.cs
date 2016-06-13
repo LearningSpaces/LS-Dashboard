@@ -10,19 +10,19 @@ namespace LS_Dashboard.Controllers
     public class GoogleDriveController : Controller
     {
         // GET: GoogleDrive
-        public ActionResult ItemCheck()
+        public ActionResult Items()
         {
-            var itemsCheck = GoogleDriveHelper.GetItemCheck();
+            var itemsCheck = GoogleDriveHelper.GetItems();
             return Json(itemsCheck,JsonRequestBehavior.AllowGet);
         }
-        public ActionResult TechCheck()
+        public ActionResult TechChecks()
         {
-            var techCheck = GoogleDriveHelper.GetTechCheck();
+            var techCheck = GoogleDriveHelper.GetTechChecks();
             return Json(techCheck,JsonRequestBehavior.AllowGet);
         }
-        public ActionResult VehicleCheck()
+        public ActionResult Vehicles()
         {
-            var vehicleCheck = GoogleDriveHelper.GetVehicleCheck();
+            var vehicleCheck = GoogleDriveHelper.GetVehicles();
             return Json(vehicleCheck,JsonRequestBehavior.AllowGet);
         }
     }

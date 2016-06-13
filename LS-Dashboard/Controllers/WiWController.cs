@@ -1,4 +1,5 @@
 ﻿using LS_Dashboard.Helpers;
+using LS_Dashboard.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,24 @@ namespace LS_Dashboard.Controllers
 {
     public class WiWController : Controller
     {
-        public ActionResult GetShifts(int? shift)
+        public ActionResult Shifts(int? shift)
         {
             if(shift == null)
             {
-                return Json(new { Message = "Shift Cannot Be Null"}, JsonRequestBehavior.AllowGet);
+                shift = WhenIWorkHelper.GetShiftFromTime(DateTime.Now);
             }
-            var shifts = WheniWorkHelper.GetShifts(shift.Value);
-            return Json(shifts, JsonRequestBehavior.AllowGet);
+            var cur_shifts = WhenIWorkHelper.GetShifts(shift.Value);
+            var next_shifts = WhenIWorkHelper.GetShifts(shift.Value + 1);
+            return Json(new {
+                current = new {
+                    shifts = cur_shifts,
+                    number = shift.Value
+                },
+                next = new {
+                    shifts = next_shifts,
+                    number = shift.Value + 1
+                }
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }
