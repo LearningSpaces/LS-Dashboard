@@ -320,3 +320,9 @@ C:\github_OU\LS-Dashboard\LS-Dashboard\bin\Microsoft.AspNet.SignalR.Core.dll
 C:\github_OU\LS-Dashboard\LS-Dashboard\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
 C:\github_OU\LS-Dashboard\LS-Dashboard\bin\Microsoft.AspNet.SignalR.Core.xml
 C:\github_OU\LS-Dashboard\LS-Dashboard\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\github_OU\LS-Dashboard\LS-Dashboard\bin\Microsoft.AspNet.SignalR.Owin.dll
+C:\github_OU\LS-Dashboard\LS-Dashboard\bin\Microsoft.Owin.Cors.dll
+C:\github_OU\LS-Dashboard\LS-Dashboard\bin\System.Web.Cors.dll
+C:\github_OU\LS-Dashboard\LS-Dashboard\bin\Microsoft.AspNet.SignalR.Owin.xml
+C:\github_OU\LS-Dashboard\LS-Dashboard\bin\Microsoft.Owin.Cors.xml
+C:\github_OU\LS-Dashboard\LS-Dashboard\obj\Debug\LS-Dashboard.csprojResolveAssemblyReference.cache

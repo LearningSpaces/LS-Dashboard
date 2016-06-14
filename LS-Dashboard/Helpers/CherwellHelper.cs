@@ -5,7 +5,7 @@ using System.Web;
 
 namespace LS_Dashboard.Helpers
 {
-    public class CherwellHelper
+    public static class CherwellHelper
     {
     }
 }

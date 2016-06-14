@@ -1,5 +1,6 @@
 ﻿using LS_Dashboard.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +11,7 @@ using System.Web.Script.Serialization;
 
 namespace LS_Dashboard.Helpers
 {
-    public class ServiceNowHelper
+    public static class ServiceNowHelper
     {
         //Enum for the ServiceNow tables to search
         public enum Table
@@ -82,7 +83,8 @@ namespace LS_Dashboard.Helpers
                     using (StreamReader reader = new StreamReader(response.GetResponseStream()))
                     {
                         string json = reader.ReadToEnd();
-                        return JsonConvert.DeserializeObject<List<IncidentModel>>(json);
+                        var results = JObject.Parse(json);
+                        return results["records"].ToObject<List<IncidentModel>>();
                     }
 
                 }

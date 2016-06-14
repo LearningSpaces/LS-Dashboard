@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LS_Dashboard.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,9 @@ namespace LS_Dashboard.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            using(var db = DbFactory.getDb()) {
+                return View(db.Incidents.ToList());
+            }
         }
     }
 }

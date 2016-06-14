@@ -1,29 +1,208 @@
-﻿@{
+﻿@model IEnumerable<LS_Dashboard.Models.DB.IncidentEntity>
+@{
     ViewBag.Title = "Home";
 }
 
-<div>
+@section styles
+{
+    <style>
+        .edit-row {
+            white-space: nowrap;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
 
+        .edit-row br {
+            display: none;
+        }
+
+        .edit-row * {
+            display: inline;
+            white-space: nowrap;
+        }
+    </style>
+}
+
+<div ng-app="dashboardApp">
+    <table id="actionable" ng-controller="IncidentController as actCtrl" class="table">
+        <tr><th>Number</th><th>Info</th><th>Notes</th><th>Availability</th></tr>
+        <tr ng-repeat="incident in actCtrl.incidents">
+            <td class="col-xs-3">{{incident.number}}</td>
+            <td class="col-xs-3">{{incident.notes}} - {{incident.availability}}</td>
+            <td><div contenteditable="true" class="edit-row" ng-model="incident.update_notes" ng-keypress="actCtrl.keyDown(incident, $event)" ng-blur="actCtrl.cancel(incident, $event)"></div></td>
+            <td><div contenteditable="true" class="edit-row" ng-model="incident.update_availability" ng-keypress="actCtrl.keyDown(incident, $event)" ng-blur="actCtrl.cancel(incident, $event)"></div></td>
+        </tr>
+    </table>
 </div>
 
 @section scripts
 {
-    @Scripts.Render("~/Scripts/jquery.canvasjs.js")
+    @Scripts.Render("~/bundles/angular");
     @Scripts.Render("~/Scripts/jquery.signalR-2.2.0.js")
     @Scripts.Render("~/signalr/hubs")
     <script>
-        var proxy = $.connection.ServerHub;
+        var app = angular.module('dashboardApp', []);
 
-        $.extend(proxy.client, {
-            updateIncident: function (incident) {
-                
+        app.directive("contenteditable", function () {
+            return {
+                restrict: "A",
+                require: "ngModel",
+                link: function (scope, element, attrs, ngModel) {
+
+                    function read() {
+                        ngModel.$setViewValue(element.html());
+                    }
+
+                    ngModel.$render = function () {
+                        element.html(ngModel.$viewValue || "");
+                    };
+
+                    element.bind("blur keyup change", function () {
+                        scope.$apply(read);
+                    });
+                }
+            };
+        });
+
+        app.controller('IncidentController', ['$scope', 'signalRProxy', function ($scope, signalRProxy) {
+            var bind = this;
+            this.incidents = [];
+
+            console.log('Connecting to hub: IncidentHub');
+            this.keyDown = function (incident, event) {
+                if (event.keyCode == 13) {
+                    this.submit(incident, event);
+                    return;
+                }
+                if (event.keyCode == 27) {
+                    this.cancel(incident, event);
+                    return;
+                }
             }
-        });
 
-        $.connection.hub.start().done(function () {
-            
-        }).fail(function () {
-            
-        });
+            this.cancel = function (incident, evt) {
+                if (incident.update_availability != incident.availability || incident.update_notes != incident.notes) {
+                    console.log(incident.update_availability, incident.availability, incident.update_notes, incident.notes);
+                    $(evt.target).parent().addClass("danger");
+                }
+                console.log("edit " + incident.number + " not submitted");
+            }
+
+            this.submit = function (incident, evt) {
+                console.log("submitting " + incident.number);
+                $(evt.target).parent().parent().children().removeClass("danger");
+                incidentHub.invoke("newIncidentUpdate",
+                    function (result) {
+                        console.log("submitted " + incident.number);
+                    },
+                    function () {
+                        console.log("submission failed for " + incident.number);
+                    },
+                    [incident.number, incident.update_notes, incident.update_availability]);
+            }
+
+            var incidentHub = signalRProxy("incidentHub", function () {
+                console.log("ServerHub connection success")
+                incidentHub.invoke("GetIncidents",
+                    function (result) {
+                        console.log(result);
+                        bind.incidents = result.actionable;
+                        bind.incidents.forEach(function (incident, i, arr) {
+                            incident.update_notes = incident.notes;
+                            incident.update_availability = incident.availability;
+                        });
+                        console.log(bind.incidents);
+                    },
+                    function (error) {
+                        console.log("Get Incidents Failed: ");
+                        console.log(error);
+                    }, []);
+            }, function () {
+                console.log("ServerHub connection failed");
+            });
+
+            incidentHub.on("updateIncident", function (number, notes, availability) {
+                console.log("updating " + number);
+                bind.incidents.forEach(function (inc, i, arr) {
+                    if (inc.number == number) {
+                        arr[i].notes = notes;
+                        arr[i].availability = availability;
+                        console.log("updated " + inc.number);
+                    }
+                });
+            });
+        }]);
+
+        app.service('signalRProxy', ["$rootScope", function ($rootScope) {
+            function proxyFactory(hubName, done, fail) {
+                    var connection = $.hubConnection("@Request.Url.AbsolutePath");
+                    var proxy = connection.createHubProxy(hubName);
+                    var bindThis = this;
+                    connection.start().done(
+                        function () {
+                            $rootScope.$apply(function () {
+                                if (done) {
+                                    done();
+                                }
+                            });
+                        }).fail(function () {
+                            $rootScope.$apply(function () {
+                                if (fail) {
+                                    fail();
+                                }
+                            });
+                        });
+
+                    return {
+                        on: function (method, callback) {
+                            proxy.on(method, function () {
+                                var args = (arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments));
+                                $rootScope.$apply(function () {
+                                    console.log(args);
+                                    if (callback) {
+                                        callback.apply(null, args);
+                                    }
+                                })
+                            });
+                        },
+
+                        invoke: function (method, done, fail, args) {
+                            var arguments = [method];
+                            for (var arg in args) {
+                                if (args.hasOwnProperty(arg)) {
+                                    arguments.push(args[arg]);
+                                }
+                            }
+                            console.log(arguments);
+                            proxy.invoke.apply(proxy, arguments).done(
+                                function (result) {
+                                    $rootScope.$apply(
+                                        function () {
+                                            if (done) {
+                                                done(result);
+                                            }
+                                        }
+                                    );
+                                }
+                            ).fail(
+                                function (error) {
+                                    $rootScope.$apply(
+                                        function () {
+                                            if (fail) {
+                                                fail(error);
+                                            }
+                                        }
+                                    );
+                                }
+                            );
+                        }
+                    }
+                }
+
+                return proxyFactory;
+        }]);
     </script>
 }

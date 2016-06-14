@@ -1,11 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace LS_Dashboard.Models
 {
+    [Table("Incidents")]
     public class IncidentModel
     {
         //ServiceNow Native Fields
@@ -39,7 +42,9 @@ namespace LS_Dashboard.Models
         public string ShortDescription { get; set; }
 
         //Added Dashboard Fields
+        [JsonProperty("notes")]
         public string Notes { get; set; }
+        [JsonProperty("availability")]
         public string Availability { get; set; }
     }
 }
