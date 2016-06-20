@@ -72,6 +72,10 @@
       <HintPath>..\packages\Google.Apis.Core.1.11.1\lib\net45\Google.Apis.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
@@ -264,6 +268,7 @@
     </Compile>
     <Compile Include="Helpers\CherwellHelper.cs" />
     <Compile Include="Helpers\DbFactory.cs" />
+    <Compile Include="Helpers\WEPAHelper.cs" />
     <Compile Include="Helpers\WhenIWorkHelper.cs" />
     <Compile Include="Helpers\ServiceNowHelper.cs" />
     <Compile Include="Helpers\GoogleDriveHelper.cs" />
@@ -275,6 +280,7 @@
     <Compile Include="Models\IncidentModel.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Models\ShiftModel.cs" />
+    <Compile Include="Models\WEPAModel.cs" />
     <Compile Include="Models\WhenIWorkLoginModel.cs" />
     <Compile Include="Models\TechCheckSectorModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
@@ -318,6 +324,7 @@
     <Content Include="Dashboard\composer.lock" />
     <Content Include="Dashboard\config.json" />
     <Content Include="Dashboard\web.config" />
+    <Content Include="Images\ouit-logo.gif" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-aria.js" />

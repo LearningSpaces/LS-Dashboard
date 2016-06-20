@@ -5,37 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
-    @RenderSection("styles", required: false);
+    @RenderSection("styles", required: false)
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        #sidebar {
+            background-color: black;
+            color: white;
+        }
 
+        #header {
+            background-color: red;
+        }
+
+        #content {
+            background-color: yellow;
+        }
+        body, html {
+            height: 100%;
+            width: 100%;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: hidden;
+        }
+        .row-no-padding > [class*="col-"] {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+    </style>
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+<body class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 col-xs-12" id="sidebar">
+            <img style="width: 100%; " src="~/Images/ouit-logo.gif" />
+            <div>
+                @RenderSection("sidebar", false)
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        <div class="col-md-10 col-xs-12 container-fluid">
+            <div class="row container" id="header">
+                <div class="row"><h1>@ViewBag.Title</h1></div>
+                <div class="row">
+                    <div class="col-md-8" style="background-color: lightgray;">@Request.ApplicationPath</div>
+                    <div class="col-md-4" id="date_time" style="background-color: red;"></div>
+                </div>
+            </div>
+            <div class="container row" id="content">
+                @RenderBody()
+            </div>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

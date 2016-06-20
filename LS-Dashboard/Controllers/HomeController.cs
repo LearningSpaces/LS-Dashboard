@@ -15,5 +15,11 @@ namespace LS_Dashboard.Controllers
                 return View(db.Incidents.ToList());
             }
         }
+
+        public ActionResult Test()
+        {
+            var results = WEPAHelper.GetWEPAStatus(7);
+            return Json(results, JsonRequestBehavior.AllowGet);
+        }
     }
 }

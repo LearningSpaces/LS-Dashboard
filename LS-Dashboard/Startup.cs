@@ -15,7 +15,7 @@ namespace LS_Dashboard
                 map.UseCors(CorsOptions.AllowAll);
                 map.RunSignalR(new HubConfiguration()
                 {
-
+                    EnableDetailedErrors = true
                 });
             });
         }

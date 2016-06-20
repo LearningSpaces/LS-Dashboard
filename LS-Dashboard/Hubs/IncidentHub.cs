@@ -10,8 +10,10 @@ using LS_Dashboard.Models.DB;
 
 namespace LS_Dashboard.Hubs
 {
+    [HubName("IncidentHub")]
     public class IncidentHub : Hub
     {
+        [HubMethodName("NewIncidentUpdate")]
         public void NewIncidentUpdate(string number, string note, string availability)
         {
             using (var db = DbFactory.getDb())
@@ -39,6 +41,7 @@ namespace LS_Dashboard.Hubs
             Clients.All.updateIncident(number, note, availability);
         }
 
+        [HubMethodName("GetIncidents")]
         public object GetIncidents()
         {
             const string ActionableQuery = "assignment_group=560ec8c34a3623260149ea9979e736a2^ORassignment_group=560ec9344a36232601893503bc6721a8^incident_state<6^short_description>=~^ORcategory=Non-Case";
