@@ -1,18 +1,24 @@
 ﻿@model IEnumerable<LS_Dashboard.Models.DB.IncidentEntity>
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Learning Spaces Dashboard";
+    ViewBag.AppName = "dashboardApp";
 }
 
 @section styles
 {
+    @Styles.Render("~/Content/dashboard.css")
+    @Styles.Render("~/Content/stylesheet.css")
     <style>
         .edit-row {
+            outline: none;
             white-space: nowrap;
             overflow: hidden;
-            height: 100%;
             width: 100%;
             margin: 0;
             padding: 0;
+            resize: none;
+            text-align: center;
+            vertical-align: middle;
         }
 
         .edit-row br {
@@ -24,44 +30,141 @@
             white-space: nowrap;
         }
     </style>
-}
-<div class="row" ng-app="dashboardApp">
-    <table id="actionable" ng-controller="IncidentController as actCtrl" ng-init="actCtrl.init('actionable')" class="table">
-        <caption>{{actCtrl.table}}</caption>
-        <tr><th>Number</th><th>Info</th><th>Notes</th><th>Availability</th></tr>
-        <tr ng-repeat="incident in actCtrl.incidents" ng-class="{danger: incident.new==true}">
-            <td class="col-xs-3">{{incident.number}}</td>
-            <td class="col-xs-3">{{incident.notes}} - {{incident.availability}}</td>
-            <td><div contenteditable="true" class="edit-row" ng-model="incident.update_notes" ng-keypress="actCtrl.keyDown(incident, $event)" ng-blur="actCtrl.cancel(incident, $event)"></div></td>
-            <td><div contenteditable="true" class="edit-row" ng-model="incident.update_availability" ng-keypress="actCtrl.keyDown(incident, $event)" ng-blur="actCtrl.cancel(incident, $event)"></div></td>
-        </tr>
+}>
+    <table class="caseTable" id="actionable" ng-controller="IncidentController as actCtrl" ng-init="actCtrl.init('actionable')">
+        <colgroup>
+            <col style="width:20%">
+            <col style="width:20%">
+            <col style="width:30%">
+            <col style="width:30%">
+        </colgroup>
+        <thead>
+            <tr><th><img></th><th colspan="2">{{actCtrl.table}}</th><th><h3></h3>cases</th></tr>
+            <tr><th>location</th><th>incident</th><th>notes</th><th>availability</th></tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="incident in actCtrl.incidents">
+                <td>{{incident.building}} {{incident.room}}</td>
+                <td>{{incident.number}}</td>
+                <td><div contenteditable class="edit-row" ng-model="incident.update_notes" ng-keyup="actCtrl.keyUp(incident, $event)" ng-blur="actCtrl.cancel(incident, $event)"></div></td>
+                <td><div contenteditable="true" class="edit-row" ng-model="incident.update_availability" ng-keyup="actCtrl.keyUp(incident, $event)" ng-blur="actCtrl.cancel(incident, $event)"></div></td>
+            </tr>
+            <tr></tr>
+        </tbody>
     </table>
-    <table id="faculty_assist" ng-controller="IncidentController as faCtrl" ng-init="faCtrl.init('faculty_assist')" class="table">
-        <caption>{{faCtrl.table}}</caption>
-        <tr><th>Number</th><th>Info</th><th>Notes</th><th>Availability</th></tr>
-        <tr ng-repeat="incident in actCtrl.incidents">
-            <td class="col-xs-3">{{incident.number}}</td>
-            <td class="col-xs-3">{{incident.notes}} - {{incident.availability}}</td>
-            <td><div contenteditable="true" class="edit-row" ng-model="incident.update_notes" ng-keypress="actCtrl.keyDown(incident, $event)" ng-blur="actCtrl.cancel(incident, $event)"></div></td>
-            <td><div contenteditable="true" class="edit-row" ng-model="incident.update_availability" ng-keypress="actCtrl.keyDown(incident, $event)" ng-blur="actCtrl.cancel(incident, $event)"></div></td>
-        </tr>
+    <table class="caseTable" id="faculty_assists" ng-controller="IncidentController as faCtrl" ng-init="actCtrl.init('faculty_assist')">
+        <colgroup>
+            <col style="width:20%">
+            <col style="width:20%">
+            <col style="width:30%">
+            <col style="width:30%">
+        </colgroup>
+        <thead>
+            <tr><th><img></th><th colspan="2">{{faCtrl.table}}</th><th><h3></h3>cases</th></tr>
+            <tr><th>location</th><th>incident</th><th>notes</th><th>availability</th></tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="incident in faCtrl.incidents">
+                <td>{{incident.building}} {{incident.room}}</td>
+                <td>{{incident.number}}</td>
+                <td><div contenteditable class="edit-row" ng-model="incident.update_notes" ng-keyup="faCtrl.keyUp(incident, $event)" ng-blur="faCtrl.cancel(incident, $event)"></div></td>
+                <td><div contenteditable="true" class="edit-row" ng-model="incident.update_availability" ng-keyup="faCtrl.keyUp(incident, $event)" ng-blur="faCtrl.cancel(incident, $event)"></div></td>
+            </tr>
+            <tr></tr>
+        </tbody>
     </table>
-    <table id="immediate_assist" ng-controller="IncidentController as cisCtrl" ng-init="cisCtrl.init('immediate_assist')" class="table">
-        <caption>{{cisCtrl.table}}</caption>
-        <tr><th>Number</th><th>Info</th><th>Notes</th><th>Availability</th></tr>
-        <tr ng-repeat="incident in actCtrl.incidents">
-            <td class="col-xs-3">{{incident.number}}</td>
-            <td class="col-xs-3">{{incident.notes}} - {{incident.availability}}</td>
-            <td><div contenteditable="true" class="edit-row" ng-model="incident.update_notes" ng-keypress="actCtrl.keyDown(incident, $event)" ng-blur="actCtrl.cancel(incident, $event)"></div></td>
-            <td><div contenteditable="true" class="edit-row" ng-model="incident.update_availability" ng-keypress="actCtrl.keyDown(incident, $event)" ng-blur="actCtrl.cancel(incident, $event)"></div></td>
-        </tr>
+    <table class="caseTable" id="class_in_session" ng-controller="IncidentController as cisCtrl" ng-init="cisCtrl.init('immediate_assist')">
+        <colgroup>
+            <col style="width:20%">
+            <col style="width:20%">
+            <col style="width:30%">
+            <col style="width:30%">
+        </colgroup>
+        <thead>
+            <tr><th><img></th><th colspan="2">{{cisCtrl.table}}</th><th><h3></h3>cases</th></tr>
+            <tr><th>location</th><th>incident</th><th>notes</th><th>availability</th></tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="incident in cisCtrl.incidents">
+                <td>{{incident.building}} {{incident.room}}</td>
+                <td>{{incident.number}}</td>
+                <td><div contenteditable class="edit-row" ng-model="incident.update_notes" ng-keyup="cisCtrl.keyDown(incident, $event)" ng-blur="cisCtrl.cancel(incident, $event)"></div></td>
+                <td><div contenteditable="true" class="edit-row" ng-model="incident.update_availability" ng-keyup="cisCtrl.keyDown(incident, $event)" ng-blur="cisCtrl.cancel(incident, $event)"></div></td>
+            </tr>
+            <tr></tr>
+        </tbody>
     </table>
-</div>
+    <table class="caseTable" id="icon_key">
+        <colgroup>
+            <col style="width:25%">
+            <col style="width:25%">
+            <col style="width:25%">
+            <col style="width:25%">
+        </colgroup>
+        <thead>
+            <tr><th><img /></th><th>icon key</th><th></th></tr>
+            <tr><th>priority</th><th>cart status</th><th>icon</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>moderate</td><td>checked in</td><td><img /></td></tr>
+            <tr><td>high</td><td>cart barn</td><td><img /></td></tr>
+            <tr><td>critical</td><td>checked out</td><td><img /></td></tr>
+        </tbody>
+    </table>
+    <table class="caseTable" id="techcheck_stats" ng-controller="TechCheckController as techCheckCtrl">
+        <colgroup>
+            <col style="width:calc(100%/3)">
+            <col style="width:calc(100%/3)">
+            <col style="width:calc(100%/3)">
+        </colgroup>
+        <thead>
+            <tr><th><img /></th><th>tech checks</th><th></th></tr>
+            <tr><th>arts & sciences</td><th>engineering</th><th>residential</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>{{techCheckCtrl.as.completed}}/{{techCheckCtrl.as.total}}</td><td>>{{techCheckCtrl.eng.completed}}/{{techCheckCtrl.eng.total}}</td><td>{{techCheckCtrl.res.completed}}/{{techCheckCtrl.res.total}}</td></tr>
+        </tbody>
+    </table>
+    <table class="caseTable" id="cart_status" ng-controller="CartStatusController as cartCtrl">
+        <colgroup>
+            <col style="width:calc(100%/3)">
+            <col style="width:calc(100%/3)">
+            <col style="width:calc(100%/3)">
+        </colgroup>
+        <thead>
+            <tr><th><img /></th><th>carts</th><th></th></tr>
+            <tr><th>cart</th><th>person</th><th>status</th></tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="cart in cartCtrl.carts">
+                <td>{{cart.name}}</td>
+                <td>{{cart.checkout_info.name}}</td>
+                <td>{{cart.status}}</td>
+            </tr>
+        </tbody>
+    </table>
 
+@section sidebar
+{
+    <div ng-controller="WIWController as wiwCtrl">
+        <table class="workerTable" id="currentWorkers">
+            <caption>Current</caption>
+            <tr ng-repeat="shift in wiwCtrl.current_shifts">
+                <td>{{shift.user.first_name}} {{shift.user.last_name}}</td>
+            </tr>
+        </table>
+        <table class="workerTable" id="nextWorkers">
+            <caption>Upcoming</caption>
+            <tr ng-repeat="shift in wiwCtrl.next_shifts">
+                <td>{{shift.user.first_name}} {{shift.user.last_name}}</td>
+            </tr>
+        </table>
+    </div>
+}
 @section scripts
 {
     <script>var path = "@Request.Url.AbsolutePath"</script>
-    @Scripts.Render("~/bundles/angular");
+    @Scripts.Render("~/bundles/angular-chart");
     @Scripts.Render("~/Scripts/jquery.signalR-2.2.0.js")
     @Scripts.Render("~/signalr/hubs")
     @Scripts.Render("~/Scripts/Dashboard/controllers.js")
@@ -69,6 +172,6 @@
     @Scripts.Render("~/Scripts/Dashboard/services.js")
 
     <script>
-        var app = angular.module('dashboardApp', ["directives", "services", "controllers"]);
+        var app = angular.module('@ViewBag.AppName', ["directives", "services", "controllers"]);
     </script>
 }

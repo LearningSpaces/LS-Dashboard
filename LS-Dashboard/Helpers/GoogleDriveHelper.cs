@@ -125,22 +125,11 @@ namespace LS_Dashboard.Helpers
                     {
                         continue;
                     }
-                    try
+                    Sector.Labs.Add(new TechCheckModel()
                     {
-                        Sector.Labs.Add(new TechCheckModel()
-                        {
-                            Name = row[i],
-                            LocationStatus = Convert.ToBoolean(row[i + techList[0].Count])
-                        });
-                    }
-                    catch(FormatException fe)
-                    {
-                        Sector.Labs.Add(new TechCheckModel()
-                        {
-                            Name = row[i],
-                            LocationStatus = false
-                        });
-                    }
+                        Name = row[i],
+                        LocationStatus = (row[i + techList[0].Count] == "1" ? true : false)
+                    });
 
                 }
 

@@ -46,5 +46,17 @@ namespace LS_Dashboard.Models
         public string Notes { get; set; }
         [JsonProperty("availability")]
         public string Availability { get; set; }
+        [JsonProperty("regent_code")]
+        public string RegentCode { get; set; }
+        [JsonProperty("room")]
+        public string Room { get; set; }
+        [JsonProperty("combined_loc")]
+        public string CombinedLocation
+        {
+            get
+            {
+                return RegentCode + " " + Room;
+            }
+        }
     }
 }

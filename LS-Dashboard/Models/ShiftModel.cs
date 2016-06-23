@@ -32,6 +32,7 @@ namespace LS_Dashboard.Models
         [JsonProperty("is_open")]
         public bool IsOpen { get; set; }
 
+        [JsonProperty("user")]
         public WhenIWorkUserModel User
         {
             get

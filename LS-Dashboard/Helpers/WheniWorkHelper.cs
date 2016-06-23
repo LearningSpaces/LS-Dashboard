@@ -108,7 +108,7 @@ namespace LS_Dashboard.Helpers
         {
             string StartTime = GetStartTime(shift);
             string EndTime = GetEndTime(shift);
-            var request = WebRequest.CreateHttp(URL + "2/shifts?include_objects[]=users&start_time=" + StartTime + "&end_time=" + EndTime);
+            var request = WebRequest.CreateHttp(URL + "2/shifts?include_objects[]=users&start=" + StartTime + "&end=" + EndTime);
             var credentials = GetLoginInfo();
             request.Headers.Add("W-Token:" + credentials.Token);
 

@@ -1,10 +1,10 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /* Custom font used */
-@font-face { font-family: Frutiger Lt Std; src: url(res/fonts/Frutiger%20LT%20Std/FrutigerLTStd-Roman.otf); }
-@font-face { font-family: Frutiger Lt Std; font-weight: bold; src: url(res/fonts/Frutiger%20LT%20Std/FrutigerLTStd-Bold.otf); }
-@font-face { font-family: Frutiger Lt Std; font-weight: lighter; src: url(res/fonts/Frutiger%20LT%20Std/FrutigerLTStd-Light.otf); }
+@font-face { font-family: Frutiger Lt Std; src: url('Fonts/Frutiger LT Std/FrutigerLTStd-Black.otf'); }
+@font-face { font-family: Frutiger Lt Std; font-weight: bold; src: url('Fonts/Frutiger LT Std/FrutigerLTStd-Bold.otf'); }
+@font-face { font-family: Frutiger Lt Std; font-weight: lighter; src: url('Fonts/Frutiger LT Std/FrutigerLTStd-Light.otf'); }
 
 /* ****** Elements ****** */
 

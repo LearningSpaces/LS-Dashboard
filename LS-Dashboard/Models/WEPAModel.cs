@@ -7,14 +7,14 @@ namespace LS_Dashboard.Models
 {
     public class WEPAModel
     {
-        public int PSNumber { get; set; }
+        public string PSNumber { get; set; }
         public string Description { get; set; }
         public string Message { get; set; }
         public string PrinterText { get; set; }
         public PrintColors Toner { get; set; }
         public PrintColors Drum { get; set; }
-        public int Belt { get; set; }
-        public int Fuser { get; set; }
+        public byte Belt { get; set; }
+        public byte Fuser { get; set; }
         public Filters Filter { get; set; }
 
         public enum Filters : byte
@@ -26,10 +26,10 @@ namespace LS_Dashboard.Models
 
         public class PrintColors
         {
-            public int Black { get; set; }
-            public int Cyan { get; set; }
-            public int Magenta { get; set; }
-            public int Yellow { get; set; }
+            public byte Black { get; set; }
+            public byte Cyan { get; set; }
+            public byte Magenta { get; set; }
+            public byte Yellow { get; set; }
         }
     }
 }

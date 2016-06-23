@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 /* Eliminates empty space for all elements*/
 * {
@@ -88,6 +88,16 @@ h3{
 .caseTable tbody td:first-child{
 	border-left: none;
 }
+
+.caseTable tbody td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.danger {
+    color: red;
+}
+
 /* Styling for tables that show current/upcoming shift workers */
 .workerTable {
 	padding-left: 10px;
@@ -195,4 +205,21 @@ h3{
 }
 #cart_status thead tr:last-child{
 	background-color: #96a0a8;
+}
+
+/* Default size is for Large devices (large desktops, 100px and up) */
+
+/* X-Small devices (phones, up to 768px) */
+@media (max-width: 768px) {
+
+}
+
+/* Small devices (tablets, up to992px) */
+@media (max-width: 992px) {
+
+}
+
+/* Medium devices (desktops, up to 1200px) */
+@media (min-width: 1200px) {
+
 }

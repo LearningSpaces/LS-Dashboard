@@ -13,6 +13,7 @@ namespace LS_Dashboard.Models
         [JsonProperty("labs")]
         public List<TechCheckModel> Labs { get; set; }
 
+        [JsonProperty("total")]
         public int Total
         {
             get
@@ -21,6 +22,7 @@ namespace LS_Dashboard.Models
             }
         }
 
+        [JsonProperty("remaining")]
         public int Remaining
         {
             get
@@ -29,6 +31,7 @@ namespace LS_Dashboard.Models
             }
         }
 
+        [JsonProperty("completed")]
         public int Completed
         {
             get

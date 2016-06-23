@@ -325,4 +325,6 @@ C:\github_OU\LS-Dashboard\LS-Dashboard\bin\Microsoft.Owin.Cors.dll
 C:\github_OU\LS-Dashboard\LS-Dashboard\bin\System.Web.Cors.dll
 C:\github_OU\LS-Dashboard\LS-Dashboard\bin\Microsoft.AspNet.SignalR.Owin.xml
 C:\github_OU\LS-Dashboard\LS-Dashboard\bin\Microsoft.Owin.Cors.xml
-C:\github_OU\LS-Dashboard\LS-Dashboard\obj\Debug\LS-Dashboard.csprojResolveAssemblyReference.cache
+C:\github_OU\LS-Dashboard\LS-Dashboard\bin\HtmlAgilityPack.dll
+C:\github_OU\LS-Dashboard\LS-Dashboard\bin\HtmlAgilityPack.pdb
+C:\github_OU\LS-Dashboard\LS-Dashboard\bin\HtmlAgilityPack.xml

@@ -47,9 +47,9 @@ namespace LS_Dashboard.Hubs
             const string ActionableQuery = "assignment_group=560ec8c34a3623260149ea9979e736a2^ORassignment_group=560ec9344a36232601893503bc6721a8^incident_state<6^short_description>=~^ORcategory=Non-Case";
             const string FacultyAssistQuery = "assignment_group=560ec8c34a3623260149ea9979e736a2^ORassignment_group=560ec9344a36232601893503bc6721a8^incident_state<6^subcategory=Faculty Assist";
             const string ImmediateAssistQuery = "assignment_group=560ec8c34a3623260149ea9979e736a2^ORassignment_group=560ec9344a36232601893503bc6721a8^incident_state<6^u_class_in_session=Yes";
-            var ActionableIncidents = ServiceNowHelper.getRecords(ServiceNowHelper.Table.Incident, ActionableQuery, false, 15);
-            var FacultyAssistIncidents = ServiceNowHelper.getRecords(ServiceNowHelper.Table.Incident, FacultyAssistQuery, false, 15);
-            var ImmediateAssistIncidents = ServiceNowHelper.getRecords(ServiceNowHelper.Table.Incident, ImmediateAssistQuery, false, 15);
+            var ActionableIncidents = ServiceNowHelper.getIncidents(ActionableQuery, false, 15);
+            var FacultyAssistIncidents = ServiceNowHelper.getIncidents(FacultyAssistQuery, false, 15);
+            var ImmediateAssistIncidents = ServiceNowHelper.getIncidents(ImmediateAssistQuery, false, 15);
             using (var db = DbFactory.getDb())
             {
                 foreach (var Inc in ActionableIncidents)
