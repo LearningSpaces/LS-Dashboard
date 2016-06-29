@@ -11,63 +11,15 @@ using Newtonsoft.Json.Linq;
 
 namespace LS_Dashboard.Helpers
 {
-    public static class WhenIWorkHelper
+    public static class WheniWorkHelper
     {
         const string URL = @"https://api.wheniwork.com/";
         const string Username = "verbick@ou.edu";
         const string Password = "whenipassword";
         const string APIKEY = "23588245629b429c427b1dad455c72581260b56c";
-        private static List<WhenIWorkUserModel> Users = new List<WhenIWorkUserModel>();
-        private static WhenIWorkLoginModel LoginInfo = null;
 
-        public static WhenIWorkUserModel GetUser(int id)
+        private static WiWLoginModel GetLoginToken()
         {
-            if (Users.Count == 0)
-            {
-                GetAllUsers();
-            }
-
-            return Users.SingleOrDefault(u => u.ID == id);
-        }
-
-        public static List<WhenIWorkUserModel> GetUsers(List<int> ids)
-        {
-            var results = new List<WhenIWorkUserModel>();
-            foreach (var id in ids)
-            {
-                results.Add(GetUser(id));
-            }
-
-            return results;
-        }
-
-        private static void GetAllUsers()
-        {
-            var request = WebRequest.CreateHttp(URL + "2/users");
-            var credentials = GetLoginInfo();
-            request.Headers.Add("W-Token:" + credentials.Token);
-
-            var response = request.GetResponse();
-            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
-            Stream dataStream = response.GetResponseStream();
-            StreamReader reader = new StreamReader(dataStream);
-            string Json = reader.ReadToEnd();
-
-            // Maybe use a using statement and try/catch
-            reader.Close();
-            dataStream.Close();
-
-            JObject results = JObject.Parse(Json);
-            Users = results["users"].ToObject<List<WhenIWorkUserModel>>();
-        }
-
-        private static WhenIWorkLoginModel GetLoginInfo()
-        {
-            if (LoginInfo != null)
-            {
-                return LoginInfo;
-            }
-
             var request = WebRequest.CreateHttp(URL + "2/login");
 
             var data = @"{""username"":""" + Username + @""", ""password"":""" + Password + @"""}";
@@ -96,21 +48,19 @@ namespace LS_Dashboard.Helpers
 
             var id = (int)results["accounts"][0]["id"];
 
-            LoginInfo = new WhenIWorkLoginModel()
+            return new WiWLoginModel()
             {
                 Token = token,
                 AccountId = id
             };
-
-            return LoginInfo;
         }
 
         public static List<ShiftModel> GetShifts(int shift)
         {
             string StartTime = GetStartTime(shift);
             string EndTime = GetEndTime(shift);
-            var request = WebRequest.CreateHttp(URL + "2/shifts?include_objects[]=users&start=" + StartTime + "&end=" + EndTime);
-            var credentials = GetLoginInfo();
+            var request = WebRequest.CreateHttp(URL + "2/shifts?start_time=" + StartTime + "&end_time=" + EndTime);
+            var credentials = GetLoginToken();
             request.Headers.Add("W-Token:" + credentials.Token);
 
             var response = request.GetResponse();
@@ -126,11 +76,6 @@ namespace LS_Dashboard.Helpers
             var shifts = results["shifts"].ToObject<List<ShiftModel>>();
 
             return shifts;
-        }
-
-        public static List<ShiftModel> GetShifts(DateTime Time)
-        {
-            return GetShifts(GetShiftFromTime(Time));
         }
 
         private static string GetStartTime(int shift)
