@@ -53,6 +53,7 @@ namespace LS_Dashboard.Helpers
             StreamReader reader = new StreamReader(dataStream);
             string Json = reader.ReadToEnd();
 
+            // Maybe use a using statement and try/catch
             reader.Close();
             dataStream.Close();
 
