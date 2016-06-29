@@ -18,14 +18,11 @@ namespace LS_Dashboard.Controllers
             }
         }
 
-        public ActionResult Test(byte? filter)
+        public ActionResult Test()
         {
-            if (filter == null)
-            {
-                filter = (byte) WEPAModel.Filters.GREEN | (byte) WEPAModel.Filters.YELLOW | (byte) WEPAModel.Filters.RED;
-            }
-            var results = WEPAHelper.GetWEPAStatus(filter.Value);
-            return Json(results, JsonRequestBehavior.AllowGet);
+            var res = CherwellHelper.getTasks();
+
+            return Json(new { result = res }, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -2,7 +2,7 @@
 /* CSS Document */
 
 /* Custom font used */
-@font-face { font-family: Frutiger Lt Std; src: url('Fonts/Frutiger LT Std/FrutigerLTStd-Black.otf'); }
+@font-face { font-family: Frutiger Lt Std; src: url('Fonts/Frutiger LT Std/FrutigerLTStd-Roman.otf'); }
 @font-face { font-family: Frutiger Lt Std; font-weight: bold; src: url('Fonts/Frutiger LT Std/FrutigerLTStd-Bold.otf'); }
 @font-face { font-family: Frutiger Lt Std; font-weight: lighter; src: url('Fonts/Frutiger LT Std/FrutigerLTStd-Light.otf'); }
 
@@ -14,7 +14,7 @@
 	margin: 0;
 	padding: 0;
 	border-spacing: 0px;
-	/*overflow: hidden;*/
+	overflow: hidden;
 }
 /* Stretches the content to the viewport and sets page font*/
 html,body {

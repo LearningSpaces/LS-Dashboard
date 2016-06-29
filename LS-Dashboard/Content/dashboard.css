@@ -1,12 +1,6 @@
 ﻿@charset "utf-8";
 /* CSS Document */
-/* Eliminates empty space for all elements*/
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	border-spacing: 0px;
-}
+
 a {
 	color: #000000;
 }
@@ -191,7 +185,9 @@ h3{
 }
 #techcheck_stats tbody tr canvas {
 	height: 100%;
-	width: 100%;
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 /* Cart Status Table */
 #cart_status {

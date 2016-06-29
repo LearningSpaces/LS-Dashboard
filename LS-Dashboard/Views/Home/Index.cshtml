@@ -6,6 +6,7 @@
 
 @section styles
 {
+    @*Render the css styles*@
     @Styles.Render("~/Content/dashboard.css")
     @Styles.Render("~/Content/stylesheet.css")
     <style>
@@ -21,128 +22,155 @@
             vertical-align: middle;
         }
 
-        .edit-row br {
-            display: none;
+            .edit-row br {
+                display: none;
+            }
+
+            .edit-row * {
+                display: inline;
+                white-space: nowrap;
+            }
+
+        .green {
+            background-color: darkgreen;
         }
 
-        .edit-row * {
-            display: inline;
-            white-space: nowrap;
+        .red {
+            background-color: firebrick;
+        }
+
+        .blue {
+            background-color: cornflowerblue;
         }
     </style>
-}>
-    <table class="caseTable" id="actionable" ng-controller="IncidentController as actCtrl" ng-init="actCtrl.init('actionable')">
-        <colgroup>
-            <col style="width:20%">
-            <col style="width:20%">
-            <col style="width:30%">
-            <col style="width:30%">
-        </colgroup>
-        <thead>
-            <tr><th><img></th><th colspan="2">{{actCtrl.table}}</th><th><h3></h3>cases</th></tr>
-            <tr><th>location</th><th>incident</th><th>notes</th><th>availability</th></tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="incident in actCtrl.incidents">
-                <td>{{incident.building}} {{incident.room}}</td>
-                <td>{{incident.number}}</td>
-                <td><div contenteditable class="edit-row" ng-model="incident.update_notes" ng-keyup="actCtrl.keyUp(incident, $event)" ng-blur="actCtrl.cancel(incident, $event)"></div></td>
-                <td><div contenteditable="true" class="edit-row" ng-model="incident.update_availability" ng-keyup="actCtrl.keyUp(incident, $event)" ng-blur="actCtrl.cancel(incident, $event)"></div></td>
-            </tr>
-            <tr></tr>
-        </tbody>
-    </table>
-    <table class="caseTable" id="faculty_assists" ng-controller="IncidentController as faCtrl" ng-init="actCtrl.init('faculty_assist')">
-        <colgroup>
-            <col style="width:20%">
-            <col style="width:20%">
-            <col style="width:30%">
-            <col style="width:30%">
-        </colgroup>
-        <thead>
-            <tr><th><img></th><th colspan="2">{{faCtrl.table}}</th><th><h3></h3>cases</th></tr>
-            <tr><th>location</th><th>incident</th><th>notes</th><th>availability</th></tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="incident in faCtrl.incidents">
-                <td>{{incident.building}} {{incident.room}}</td>
-                <td>{{incident.number}}</td>
-                <td><div contenteditable class="edit-row" ng-model="incident.update_notes" ng-keyup="faCtrl.keyUp(incident, $event)" ng-blur="faCtrl.cancel(incident, $event)"></div></td>
-                <td><div contenteditable="true" class="edit-row" ng-model="incident.update_availability" ng-keyup="faCtrl.keyUp(incident, $event)" ng-blur="faCtrl.cancel(incident, $event)"></div></td>
-            </tr>
-            <tr></tr>
-        </tbody>
-    </table>
-    <table class="caseTable" id="class_in_session" ng-controller="IncidentController as cisCtrl" ng-init="cisCtrl.init('immediate_assist')">
-        <colgroup>
-            <col style="width:20%">
-            <col style="width:20%">
-            <col style="width:30%">
-            <col style="width:30%">
-        </colgroup>
-        <thead>
-            <tr><th><img></th><th colspan="2">{{cisCtrl.table}}</th><th><h3></h3>cases</th></tr>
-            <tr><th>location</th><th>incident</th><th>notes</th><th>availability</th></tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="incident in cisCtrl.incidents">
-                <td>{{incident.building}} {{incident.room}}</td>
-                <td>{{incident.number}}</td>
-                <td><div contenteditable class="edit-row" ng-model="incident.update_notes" ng-keyup="cisCtrl.keyDown(incident, $event)" ng-blur="cisCtrl.cancel(incident, $event)"></div></td>
-                <td><div contenteditable="true" class="edit-row" ng-model="incident.update_availability" ng-keyup="cisCtrl.keyDown(incident, $event)" ng-blur="cisCtrl.cancel(incident, $event)"></div></td>
-            </tr>
-            <tr></tr>
-        </tbody>
-    </table>
-    <table class="caseTable" id="icon_key">
-        <colgroup>
-            <col style="width:25%">
-            <col style="width:25%">
-            <col style="width:25%">
-            <col style="width:25%">
-        </colgroup>
-        <thead>
-            <tr><th><img /></th><th>icon key</th><th></th></tr>
-            <tr><th>priority</th><th>cart status</th><th>icon</th></tr>
-        </thead>
-        <tbody>
-            <tr><td>moderate</td><td>checked in</td><td><img /></td></tr>
-            <tr><td>high</td><td>cart barn</td><td><img /></td></tr>
-            <tr><td>critical</td><td>checked out</td><td><img /></td></tr>
-        </tbody>
-    </table>
-    <table class="caseTable" id="techcheck_stats" ng-controller="TechCheckController as techCheckCtrl">
-        <colgroup>
-            <col style="width:calc(100%/3)">
-            <col style="width:calc(100%/3)">
-            <col style="width:calc(100%/3)">
-        </colgroup>
-        <thead>
-            <tr><th><img /></th><th>tech checks</th><th></th></tr>
-            <tr><th>arts & sciences</td><th>engineering</th><th>residential</th></tr>
-        </thead>
-        <tbody>
-            <tr><td>{{techCheckCtrl.as.completed}}/{{techCheckCtrl.as.total}}</td><td>>{{techCheckCtrl.eng.completed}}/{{techCheckCtrl.eng.total}}</td><td>{{techCheckCtrl.res.completed}}/{{techCheckCtrl.res.total}}</td></tr>
-        </tbody>
-    </table>
-    <table class="caseTable" id="cart_status" ng-controller="CartStatusController as cartCtrl">
-        <colgroup>
-            <col style="width:calc(100%/3)">
-            <col style="width:calc(100%/3)">
-            <col style="width:calc(100%/3)">
-        </colgroup>
-        <thead>
-            <tr><th><img /></th><th>carts</th><th></th></tr>
-            <tr><th>cart</th><th>person</th><th>status</th></tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="cart in cartCtrl.carts">
-                <td>{{cart.name}}</td>
-                <td>{{cart.checkout_info.name}}</td>
-                <td>{{cart.status}}</td>
-            </tr>
-        </tbody>
-    </table>
+}
+@*
+    Make a table for each of the incidents tables
+    Each incident table instanciates a new IncidentController with the table's contents name (ie actionable, faculty_assist, immediate_assist)
+        passed into the init function for the controller
+*@
+<table class="caseTable" id="actionable" ng-controller="IncidentController as actCtrl" ng-init="actCtrl.init('actionable','/Images/Actionables-icon.gif')">
+    <colgroup>
+        <col style="width:20%">
+        <col style="width:20%">
+        <col style="width:30%">
+        <col style="width:30%">
+    </colgroup>
+    <thead>
+        @* Use the controller table field, replacing "_" with " "*@
+        <tr><th><img ng-src="{{actCtrl.icon}}" ng-click="actCtrl.update()" /></th><th colspan="2" ng-bind="actCtrl.label"></th><th><h3 ng-bind="actCtrl.incidents.length"></h3>cases</th></tr>
+        <tr><th>location</th><th>incident</th><th>notes</th><th>availability</th></tr>
+    </thead>
+    <tbody>
+        @*
+            For each row show the building/room, number, notes, and availability
+            The notes/availability are implemented as contentEditable Divs. The keyup event is monitored to check for ENTER or ESC to handle submission/canceling
+        *@
+        <tr ng-repeat="incident in actCtrl.incidents">
+            <td ng-bind-template="{{incident.building}} {{incident.room}}"></td>
+            <td ng-bind="incident.number"></td>
+            <td><div contenteditable class="edit-row" ng-model="incident.update_notes" ng-keyup="actCtrl.keyUp(incident, $event)" ng-blur="actCtrl.cancel(incident, $event)"></div></td>
+            <td><div contenteditable="true" class="edit-row" ng-model="incident.update_availability" ng-keyup="actCtrl.keyUp(incident, $event)" ng-blur="actCtrl.cancel(incident, $event)"></div></td>
+        </tr>
+        <tr></tr>
+    </tbody>
+</table>
+@*
+    Same as first table but assigned_to is showed instead of notes
+*@
+<table class="caseTable" id="faculty_assists" ng-controller="IncidentController as faCtrl" ng-init="faCtrl.init('faculty_assist','/Images/faculty-assist-icon.gif')">
+    <colgroup>
+        <col style="width:20%">
+        <col style="width:20%">
+        <col style="width:30%">
+        <col style="width:30%">
+    </colgroup>
+    <thead>
+        <tr><th><img ng-src="{{faCtrl.icon}}" ng-click="faCtrl.update()" /></th><th colspan="2" ng-bind="faCtrl.label"></th><th><h3 ng-bind="faCtrl.incidents.length"></h3>cases</th></tr>
+        <tr><th>location</th><th>incident</th><th>assigned</th><th>date/time</th></tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="incident in faCtrl.incidents">
+            <td ng-bind-template="{{incident.building}} {{incident.room}}"></td>
+            <td ng-bind="incident.number"></td>
+            <td ng-bind="incident.assigned_to"></td>
+            <td><div contenteditable="true" class="edit-row" ng-model="incident.update_availability" ng-keyup="faCtrl.keyUp(incident, $event)" ng-blur="faCtrl.cancel(incident, $event)"></div></td>
+        </tr>
+        <tr></tr>
+    </tbody>
+</table>
+
+@*
+    Same as actionable
+*@
+<table class="caseTable" id="class_in_session" ng-controller="IncidentController as cisCtrl" ng-init="cisCtrl.init('immediate_assist','/Images/Urgent-Icon.gif')">
+    <colgroup>
+        <col style="width:20%">
+        <col style="width:20%">
+        <col style="width:30%">
+        <col style="width:30%">
+    </colgroup>
+    <thead>
+        <tr><th><img ng-src="{{cisCtrl.icon}}" ng-click="cisCtrl.update()" /></th><th colspan="2" ng-bind="cisCtrl.label"></th><th><h3 ng-bind="cisCtrl.incidents.length"></h3>cases</th></tr>
+        <tr><th>location</th><th>incident</th><th>notes</th><th>availability</th></tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="incident in cisCtrl.incidents">
+            <td ng-bind-template="{{incident.building}} {{incident.room}}"></td>
+            <td ng-bind="incident.number"></td>
+            <td><div contenteditable class="edit-row" ng-model="incident.update_notes" ng-keyup="cisCtrl.keyDown(incident, $event)" ng-blur="cisCtrl.cancel(incident, $event)"></div></td>
+            <td><div contenteditable="true" class="edit-row" ng-model="incident.update_availability" ng-keyup="cisCtrl.keyDown(incident, $event)" ng-blur="cisCtrl.cancel(incident, $event)"></div></td>
+        </tr>
+        <tr></tr>
+    </tbody>
+</table>
+
+@*
+    Techcheck stats uses Chart.js to show charts. There is another library, angular-charts, that contains angular directives for use with Chart.js
+*@
+<table class="caseTable" id="techcheck_stats" ng-controller="TechCheckController as tcCtrl">
+    <colgroup>
+        <col style="width:calc(100%/3)">
+        <col style="width:calc(100%/3)">
+        <col style="width:calc(100%/3)">
+    </colgroup>
+    <thead>
+        <tr><th><img ng-src="{{tcCtrl.icon}}" ng-click="tcCtrl.update()" /></th><th>tech checks</th><th></th></tr>
+        <tr><th>arts & sciences</td><th>engineering</th><th>residential</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            @*
+                Each chart is a Doughnut chart with the data tied to a data field in the controller, the labels, options, and colors are also defined in the controller
+            *@
+            <td><canvas class="chart chart-doughnut" chart-colors="tcCtrl.as.colors" chart-data="tcCtrl.as.data" chart-labels="tcCtrl.labels" chart-options="tcCtrl.as.options"></canvas></td>
+            <td><canvas class="chart chart-doughnut" chart-colors="tcCtrl.eng.colors" chart-data="tcCtrl.eng.data" chart-labels="tcCtrl.labels" chart-options="tcCtrl.eng.options"></canvas></td>
+            <td><canvas class="chart chart-doughnut" chart-colors="tcCtrl.res.colors" chart-data="tcCtrl.res.data" chart-labels="tcCtrl.labels" chart-options="tcCtrl.res.options"></canvas></td>
+        </tr>
+    </tbody>
+</table>
+<table class="caseTable" id="cart_status" ng-controller="CartStatusController as cartCtrl">
+    <colgroup>
+        <col style="width: 5%;">
+        <col style="width:calc(95%/3)">
+        <col style="width:calc(95%/3)">
+        <col style="width:calc(95%/3)">
+    </colgroup>
+    <thead>
+        <tr><th></th><th><img ng-src="{{cartCtrl.icon}}" ng-click="cartCtrl.update()" /></th><th>carts</th><th></th></tr>
+        <tr><th></th><th>cart</th><th>person</th><th>status</th></tr>
+    </thead>
+    <tbody>
+        @* Foreach cart reported, make a row with the name, person, and status *@
+        <tr ng-repeat="cart in cartCtrl.carts">
+            @* Sets the class depending on the current status *@
+            <td ng-class="{green: cart.status=='Check in', red: cart.status=='Check out', blue: cart.status=='Store / Park Vehicle'}"></td>
+            <td ng-bind="cart.name"></td>
+            <td ng-bind="cart.checkout_info.name"></td>
+            <td ng-bind="cart.status"></td>
+        </tr>
+    </tbody>
+</table>
 
 @section sidebar
 {
@@ -150,27 +178,26 @@
         <table class="workerTable" id="currentWorkers">
             <caption>Current</caption>
             <tr ng-repeat="shift in wiwCtrl.current_shifts">
-                <td>{{shift.user.first_name}} {{shift.user.last_name}}</td>
+                <td ng-bind-template="{{shift.user.first_name}} {{shift.user.last_name}}"></td>
             </tr>
         </table>
         <table class="workerTable" id="nextWorkers">
             <caption>Upcoming</caption>
             <tr ng-repeat="shift in wiwCtrl.next_shifts">
-                <td>{{shift.user.first_name}} {{shift.user.last_name}}</td>
+                <td ng-bind-template="{{shift.user.first_name}} {{shift.user.last_name}}"></td>
             </tr>
         </table>
     </div>
 }
+
 @section scripts
 {
-    <script>var path = "@Request.Url.AbsolutePath"</script>
     @Scripts.Render("~/bundles/angular-chart");
     @Scripts.Render("~/Scripts/jquery.signalR-2.2.0.js")
     @Scripts.Render("~/signalr/hubs")
     @Scripts.Render("~/Scripts/Dashboard/controllers.js")
     @Scripts.Render("~/Scripts/Dashboard/directives.js")
     @Scripts.Render("~/Scripts/Dashboard/services.js")
-
     <script>
         var app = angular.module('@ViewBag.AppName', ["directives", "services", "controllers"]);
     </script>

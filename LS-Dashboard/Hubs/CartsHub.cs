@@ -7,11 +7,14 @@ using System.Web;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 
+// SignalR hub for handling the carts' statuses
 namespace LS_Dashboard.Hubs
 {
     [HubName("CartsHub")]
     public class CartsHub : Hub
     {
+        // Method to get all of the carts' statuses
+        // Currently uses the GoogleDriveHelper to pull the info from Google Drive
         [HubMethodName("GetCartStatuses")]
         public List<CartModel> GetCartStatuses()
         {

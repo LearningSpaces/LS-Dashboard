@@ -1,5 +1,6 @@
 ﻿var dir = angular.module("directives", [])
 
+// Directive to update property using ng-model just like an <input> using a contentEditable div
 dir.directive("contenteditable", function () {
     return {
         restrict: "A",
