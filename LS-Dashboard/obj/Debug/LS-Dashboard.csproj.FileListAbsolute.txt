@@ -328,4 +328,3 @@ C:\github_OU\LS-Dashboard\LS-Dashboard\bin\Microsoft.Owin.Cors.xml
 C:\github_OU\LS-Dashboard\LS-Dashboard\bin\HtmlAgilityPack.dll
 C:\github_OU\LS-Dashboard\LS-Dashboard\bin\HtmlAgilityPack.pdb
 C:\github_OU\LS-Dashboard\LS-Dashboard\bin\HtmlAgilityPack.xml
-C:\github_OU\LS-Dashboard\LS-Dashboard\obj\Debug\LS-Dashboard.csprojResolveAssemblyReference.cache
